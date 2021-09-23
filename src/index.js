@@ -72,7 +72,33 @@ function capitalizeString(word)
 
 }
 
-console.log(capitalizeString('hallo'));
-
 // - Eine Funktion mi der wie den benutzernamen generieren und auf die ergebnisse der anderen funktionen zugreifen;
+
+/**
+ * @function createRandomUserName
+ * @description Creates a random username
+ * @param { number } maxNumber 
+ * @returns { string }
+ */
+
+function createRandomUserName(maxNumber)
+{
+    const words = getWords();
+
+    // wir holen uns aus der wortliste die adjektive
+    const adj = words.adjs[ Math.floor(Math.random() * (words.adjs.length - 1)) ];
+
+    // wir holen uns aus der wortliste die nomen
+    const noun = words.nouns[ Math.floor(Math.random() * (words.nouns.length - 1)) ];
+
+    // wir holen uns unsere zufallszahl
+    const randomNumber = createRandomNumber(10000, maxNumber);
+
+    //wir fügen alles zusammen
+    const finalUserName = `${ capitalizeString(adj) }${ capitalizeString(noun) }${ maxNumber !== 0 ? randomNumber : '' }`;
+
+   return finalUserName;
+}
+
+
 // - Einen export, um die Applikation in einer anderen Datei zu nutzen.
